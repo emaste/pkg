@@ -25,19 +25,19 @@ clean:
 	rm -f $(PDAILY) $(PSECURITY) $(PWEEKLY)
 
 install: $(PDAILY) $(PSECURITY) $(PWEEKLY) $(COMPLETION)
-	install -d -m 755 $(DESTDIR)$(pdailydir)
-	install -d -m 755 $(DESTDIR)$(pweeklydir)
-	install -d -m 755 $(DESTDIR)$(psecuritydir)
-	install -d -m 755 $(DESTDIR)$(bashcompdir)
-	install -d -m 755 $(DESTDIR)$(zshcompdir)
+	install $(INSTALLFLAGS) -d -m 755 $(DESTDIR)$(pdailydir)
+	install $(INSTALLFLAGS) -d -m 755 $(DESTDIR)$(pweeklydir)
+	install $(INSTALLFLAGS) -d -m 755 $(DESTDIR)$(psecuritydir)
+	install $(INSTALLFLAGS) -d -m 755 $(DESTDIR)$(bashcompdir)
+	install $(INSTALLFLAGS) -d -m 755 $(DESTDIR)$(zshcompdir)
 	for script in $(PDAILY); do \
-		install -m 755 $$script $(DESTDIR)$(pdailydir)/ ; \
+		install $(INSTALLFLAGS) -m 755 $$script $(DESTDIR)$(pdailydir)/ ; \
 	done
 	for script in $(PSECURITY); do \
-		install -m 755 $$script $(DESTDIR)$(psecuritydir)/ ; \
+		install $(INSTALLFLAGS) -m 755 $$script $(DESTDIR)$(psecuritydir)/ ; \
 	done
 	for script in $(PWEEKLY); do \
-		install -m 755 $$script $(DESTDIR)$(pweeklydir)/ ; \
+		install $(INSTALLFLAGS) -m 755 $$script $(DESTDIR)$(pweeklydir)/ ; \
 	done
-	install -m 644 completion/_pkg.bash $(DESTDIR)$(bashcompdir)/
-	install -m 644 completion/_pkg  $(DESTDIR)$(zshcompdir)/
+	install $(INSTALLFLAGS) -m 644 completion/_pkg.bash $(DESTDIR)$(bashcompdir)/
+	install $(INSTALLFLAGS) -m 644 completion/_pkg  $(DESTDIR)$(zshcompdir)/

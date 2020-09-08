@@ -94,8 +94,8 @@ pkg-static: $(OBJS) $(top_builddir)/libpkg/libpkg_flat.a
 	$(CC) -o $@ $(OBJS) $(STATIC_ARG) $(LDFLAGS) $(STATIC_LDFLAGS)
 
 install-static: pkg-static
-	install -d -m 755 $(DESTDIR)$(sbindir)
-	install -m 755 pkg-static $(DESTDIR)$(sbindir)/pkg-static
+	install $(INSTALLFLAGS) -d -m 755 $(DESTDIR)$(sbindir)
+	install $(INSTALLFLAGS) -m 755 pkg-static $(DESTDIR)$(sbindir)/pkg-static
 @endif
 
 ${OBJS}: $(top_builddir)/pkg_config.h
@@ -103,9 +103,9 @@ ${OBJS}: $(top_builddir)/pkg_config.h
 $(PROG): $(top_builddir)/libpkg/libpkg_flat.a
 
 install: $(PROG)
-	install -d -m 755 $(DESTDIR)$(sbindir)
-	install -m 755 pkg $(DESTDIR)$(sbindir)/pkg
-	install -m 644 pkg.conf.sample $(DESTDIR)$(etcdir)/
+	install $(INSTALLFLAGS) -d -m 755 $(DESTDIR)$(sbindir)
+	install $(INSTALLFLAGS) -m 755 pkg $(DESTDIR)$(sbindir)/pkg
+	install $(INSTALLFLAGS) -m 644 pkg.conf.sample $(DESTDIR)$(etcdir)/
 
 clean: clean-pkg-static
 clean-pkg-static:
