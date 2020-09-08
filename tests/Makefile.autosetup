@@ -130,7 +130,7 @@ lib/pkg_printf.c:
 	cp $(top_srcdir)/libpkg/pkg_printf.c $@
 
 .sh:
-	install -m 755 $< $@
+	install $(INSTALLFLAGS) -m 755 $< $@
 
 clean:
 	rm -f lib/pkg_printf.c $(OBJS) $(TESTS) $(TESTS_SHELL) Kyuafile frontend/Kyuafile
